@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+{% load static %}  
+<html lang="en">
+<head>
+  <title>Registration Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    
+
+body {
+    background-color: #eee;
+}
+
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
+
+
+
+</style>  
+
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Affairal</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active" ><a href="#">Register</a></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/manage/"><span class="glyphicon glyphicon-home"></span> Manage</a></li>
+      <li><a href="/admin/"><span class="glyphicon glyphicon-home"></span>Admin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<h3>Registration Form </h3>
+
+{% if stat == 'Success' %}
+    <h4 class="bg-success"> &nbsp &nbsp  Successfully Registered - Your Id :{{reg_num}} </h4>
+{% endif %}
+  
+{% if Error %}
+    <p align='middle' class="bg-danger">Error : {{Error}}</p>
+{% endif %}
+
+
+    
+  <div class="container" >
+      <div class="row">
+          
+          <div class="col-md-6">
+              
+                   <p style="font-size:150% ; font-family:calibri">
+                   
+                      
+                   
+                      <form action="" method ="post" enctype="multipart/form-data">
+  
+                          {% csrf_token %}
+                          <p>    
+                            <b style="padding-right:4.7em;">Full Name</b> {{form.name}}<br><br>
+                            <b style="padding-right:7em;">Email</b>   {{form.email}}<br><br>
+                           <b style="padding-right:6.4em;"> Mobile </b> {{form.mobile}}<br><br>
+                           <b style="padding-right:1.5em;"> Registration type</b> {{form.reg_type}}<br><br>
+                           <b style="padding-right:3.2em;"> No of Tickets</b> {{form.ticket_count}}<br><br>
+                           <b style="padding-right:7em;"> Event </b>{{form.Event}}<br><br>  
+                           <b style="padding-right:4.2em;"> ID Card Img </b>{{form.idcard_img}}<br><br> 
+                              
+                          </p>
+                          
+                            
+                           
+                        <input type="submit" class="btn btn-success" name="preview"value="Preview">  
+                        <input type="submit" class="btn btn-success" name="submit" value="Submit">  
+                        </form>  
+                   </p>
+                
+          </div>  
+      </div>  
+      
+      
+  </div>          
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+  $('#id_reg_type').change(function() {
+      if ($("#id_reg_type").val() == 'SF') {
+                                                $('#id_ticket_count').val(1);
+                                                    
+                                              }
+                                                  
+                                        });
+</script>    
+    
+    
+</body>    
+ 
+
+
+
