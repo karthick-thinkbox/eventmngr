@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 <style>
     
@@ -66,8 +67,8 @@ body {
 
     
   <div class="container" >
-      <div class="row">
-          
+      <div ng-app="" class="row">
+            
           <div class="col-md-6">
               
                    <p style="font-size:150% ; font-family:calibri">
@@ -90,12 +91,39 @@ body {
                           
                             
                            
-                        <input type="submit" class="btn btn-success" name="preview"value="Preview">  
-                        <input type="submit" class="btn btn-success" name="submit" value="Submit">  
+                        <input type="submit" class="btn btn-success" name="submit" value="Submit"> 
+                         
                         </form>  
                    </p>
                 
           </div>  
+      
+          <h4>Live preview</h4>
+          
+          <div class="col-md-6">
+              <div class="row">
+          <div class="col-md-6">
+                <img id="upload" src="#"  height=200 width=250 class="img-rounded" style="padding:10px"   alt="Product Image" />
+          </div>
+         
+          <div class="col-md-6">
+              
+                   <div ng-app="">
+                   Name : <span ng-bind="name"></span><br><br>
+                   Email :<span ng-bind="email"></span><br><br>
+                   Mobile : <span ng-bind="mobile"></span><br><br>
+                   Reg Type : <span ng-bind="reg_type"></span><br><br>
+                   Tickets :<span ng-bind="ticket_count"></span><br><br>
+                   Event :<span ng-bind="Event"></span><br>
+                   
+                </div>
+                
+          </div>  
+      </div> 
+  
+   
+                   
+          </div> 
       </div>  
       
       
@@ -109,7 +137,22 @@ body {
                                                     
                                               }
                                                   
-                                        });
+                                        }); 
+                                            
+</script>   
+
+<script >
+    document.getElementById("id_idcard_img").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("upload").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
 </script>    
     
     

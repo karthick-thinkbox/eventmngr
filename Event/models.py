@@ -25,7 +25,8 @@ class event_info(models.Model):
     Event_name=models.CharField(max_length=150,unique=True)
     Event_date=models.DateField(null=True,blank=True)
     Location=models.CharField(max_length=150)
-    Event_type=models.CharField(max_length=150,unique=True)
+    Event_type=models.CharField(max_length=150,null=True,blank=True,)
+    
     
     def __str__(self):
         return self.Event_name

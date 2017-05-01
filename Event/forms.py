@@ -1,11 +1,12 @@
 from django import forms
 from .models import  user_data,event_info
-from django.forms import ModelForm
+from django.forms import ModelForm 
+from djng.forms import NgModelFormMixin, NgModelForm
 
 class DateInput(forms.DateInput):
     input_type = 'date'
 
-class userform(ModelForm):
+class userform(NgModelFormMixin, NgModelForm):
     class Meta:
         model=user_data
         fields=['name','mobile','email','idcard_img','ticket_count','reg_type','Event',]

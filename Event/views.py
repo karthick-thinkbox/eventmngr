@@ -16,8 +16,9 @@ def user_reg(request):
     userform.base_fields['Event']=forms.ModelChoiceField(queryset=event_info.objects.all())
     
     if request.method=="POST":
-        getform=userform(request.POST,request.FILES)
+        getform=userform(request.POST)
         if getform.is_valid():
+            '''
             if 'preview' in request.POST:
                 post_row=getform.save(commit=False)
                 pre_name=getform.cleaned_data['name']
@@ -28,24 +29,24 @@ def user_reg(request):
                 pre_count=getform.cleaned_data['ticket_count']
                 pre_img=getform.cleaned_data['idcard_img']
                 return render(request,'preview.html',{ 'form2':getform,'name':pre_name,'mobile':pre_mobile,'email':pre_email,'evt_type':pre_evtype,'count':pre_count,'evt':pre_event,'img':pre_img})
-                
-            else:
+             '''   
+            if 'preview' not in request.POST:
                 try:
                     getform.save()
                 except Exception as Error:
                     form=userform()
-                    return render(request,'registraion.html',{'form':form,'Error':Error})
+                    return render(request,'registration.html',{'form':form,'Error':Error})
                 row=user_data.objects.latest('id')
                 form=userform()
                 return render(request,'registration.html',{'form':form,'stat':'Success','reg_num':row.regnum})
         Error=getform.errors
         form=userform()
-        return render(request,'registraion.html',{'form':form,'Error':Error})
+        return render(request,'registration.html',{'form':form,'Error':Error})
         
             
     
     form=userform()
-    return render(request,'registraion.html',{'form':form})
+    return render(request,'registration.html',{'form':form})
 def exitpage(request):
     logout(request)
     return render (request,'logout.html')

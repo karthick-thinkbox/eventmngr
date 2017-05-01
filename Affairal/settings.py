@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Event',
     'django_tables2',
-    'formtools'
+    'formtools',
+    'djng',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'Affairal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'affairal',
+        'NAME': 'affairal_dev',
         'USER':'root',
         'PASSWORD':'Arunachalam@3',
         'HOST':'localhost',
